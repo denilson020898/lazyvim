@@ -42,3 +42,13 @@ vim.api.nvim_create_autocmd("FileType", {
     -- ... whatever other keybinds you like :)
   end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = vim.api.nvim_create_augroup("persistence", { clear = true }),
+  callback = function()
+    -- Only load the session if no arguments were passed to nvim
+    if vim.fn.argc() == 0 and not vim.g.started_with_stdin then
+      require("persistence").load()
+    end
+  end,
+})
