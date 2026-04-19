@@ -74,10 +74,19 @@ vim.keymap.set({ "n", "v" }, "<leader>f", function()
   require("lazyvim.util").format({ force = true })
 end, { desc = "Format" })
 
-vim.keymap.set('n', '<space>gB', '<CMD>GitBlameOpenCommitURL<CR>', { desc = 'open current commit url' })
-vim.keymap.set('n', '<space>gb', '<CMD>GitBlameToggle<CR>', { desc = 'Git: toggle blame' })
-vim.keymap.set('n', '<space>gc', '<CMD>GitBlameCopySHA<CR>', { desc = 'copies the SHA hash of current line commit into the system clipboard' })
+vim.keymap.set("n", "<space>gB", "<CMD>GitBlameOpenCommitURL<CR>", { desc = "open current commit url" })
+vim.keymap.set("n", "<space>gb", "<CMD>GitBlameToggle<CR>", { desc = "Git: toggle blame" })
+vim.keymap.set(
+  "n",
+  "<space>gc",
+  "<CMD>GitBlameCopySHA<CR>",
+  { desc = "copies the SHA hash of current line commit into the system clipboard" }
+)
 
-vim.keymap.set('n', '<space>gF', '<CMD>GitBlameOpenFileURL<CR>', { desc = 'opens the file in the default browser.' })
-vim.keymap.set('n', '<space>gf', '<CMD>GitBlameCopyFileURL<CR>', { desc = 'copies the file URL into the system clipboard' })
-
+vim.keymap.set("n", "<space>gF", "<CMD>GitBlameOpenFileURL<CR>", { desc = "opens the file in the default browser." })
+vim.keymap.set(
+  "n",
+  "<space>gf",
+  "<CMD>GitBlameCopyFileURL<CR>",
+  { desc = "copies the file URL into the system clipboard" }
+)
