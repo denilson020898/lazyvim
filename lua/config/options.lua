@@ -12,3 +12,4 @@ vim.g.lazyvim_picker = "telescope"
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.background = "dark"
+vim.opt.relativenumber = false
