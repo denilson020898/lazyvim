@@ -4,6 +4,9 @@
 
 vim.keymap.set("n", "<space><space>", "<cmd>b#<cr>", { noremap = true, desc = "previous buffer" })
 
+-- Filter out Odoo test noise: tests/ dirs, whole test_* modules, and .po/.pot translation files
+local odoo_filter = "-g !**/tests/** -g !**/test_*/** -g !*.po -g !*.pot"
+
 vim.keymap.set("n", "<space>W", function()
   require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
 end, { noremap = true, desc = "Launch with the current word under the cursor as the search string" })
@@ -18,7 +21,7 @@ vim.keymap.set("n", "<space>w", function()
   require("grug-far").open({
     prefills = {
       search = vim.fn.expand("<cword>"),
-      flags = "-g !**/tests/** -g !*.po",
+      flags = odoo_filter,
     },
   })
 end, { noremap = true, desc = "Launch with the current word under the cursor as the search string" })
@@ -27,7 +30,7 @@ vim.keymap.set("n", "<space>s", function()
   require("grug-far").open({
     startInInsertMode = true,
     prefills = {
-      flags = "-g !**/tests/** -g !*.po",
+      flags = odoo_filter,
     },
   })
 end, { noremap = true, desc = "grug far search" })
@@ -90,3 +93,18 @@ vim.keymap.set(
   "<CMD>GitBlameCopyFileURL<CR>",
   { desc = "copies the file URL into the system clipboard" }
 )
+
+vim.keymap.set('n', '<leader>cl', function()
+  local path = vim.fn.expand('%')
+  local line = vim.fn.line('.')
+  vim.fn.setreg('+', path .. ':' .. line)
+  print("Copied: " .. path .. ":" .. line)
+end, { desc = 'Copy relative path and line' })
+
+-- Copy absolute path and line number
+vim.keymap.set('n', '<leader>cL', function()
+  local path = vim.fn.expand('%:p')
+  local line = vim.fn.line('.')
+  vim.fn.setreg('+', path .. ':' .. line)
+  print("Copied: " .. path .. ":" .. line)
+end, { desc = 'Copy absolute path and line' })

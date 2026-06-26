@@ -6,6 +6,9 @@ vim.g.maplocalleader = "\\"
 
 vim.g.snacks_animate = false
 vim.g.autoformat = false
+vim.o.wrap = false
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = '' 
 
 vim.g.lazyvim_picker = "telescope"
 
@@ -13,3 +16,6 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.background = "dark"
 vim.opt.relativenumber = false
+
+vim.g.gruvbox_material_background = 'hard'
+vim.g.gruvbox_material_transparent_background = 1

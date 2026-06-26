@@ -10,6 +10,10 @@ return {
       -- there are no required options atm
       startInInsertMode = false,
       showCompactInputs = true,
+      -- Make buffers unlisted + self-wiping when the window closes.
+      -- Prevents grug-far buffers from being saved into persistence.nvim
+      -- sessions and restored as broken empty buffers on next launch.
+      transient = true,
       -- windowCreationCommand = 'tab split',
     })
   end,
